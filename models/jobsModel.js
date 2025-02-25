@@ -16,6 +16,16 @@ const jobSchema = new Schema(
       enum: ["pending", "reject", "interview"],
       default: "pending",
     },
+    workType: {
+      type: String,
+      enum: ["full-time", "part-time", "internship", "contract"],
+      default: "full-time",
+    },
+    workLocation: {
+      type: String,
+      default: "Mumbai",
+      required: [true, "Work location is required"],
+    },
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
@@ -24,4 +34,4 @@ const jobSchema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("JOB", jobSchema);
+export default mongoose.model("Job", jobSchema);
